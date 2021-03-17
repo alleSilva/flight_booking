@@ -8,7 +8,7 @@ defmodule FlightBooking.Users.User do
     when is_bitstring(cpf) do
     {:ok,
       %__MODULE__{
-        id: id
+        id: id,
         name: name,
         cpf: cpf,
         email: email,
