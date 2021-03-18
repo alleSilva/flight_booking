@@ -22,7 +22,8 @@ defmodule FlightBooking.MixProject do
   defp deps do
     [
       {:decimal, "~> 2.0"},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      { :elixir_uuid, "~> 1.2" }
     ]
   end
 end
