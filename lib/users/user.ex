@@ -4,18 +4,18 @@ defmodule FlightBooking.Users.User do
 
   defstruct @keys
 
-  def build(id, name, cpf, email) 
+  def build(name, cpf, email)
     when is_bitstring(cpf) do
     {:ok,
       %__MODULE__{
-        id: id,
+        id: UUID.uuid4(),
         name: name,
         cpf: cpf,
         email: email,
       }
-    }    
+    }
   end
 
-  def build(_id, _name ,_cpf ,_email), 
-    do: {:error, "Invalid parameters"} 
+  def build(_name, _cpf , _email),
+    do: {:error, "Invalid parameters"}
 end
