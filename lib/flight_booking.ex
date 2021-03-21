@@ -1,8 +1,8 @@
 defmodule FlightBooking do
+  alias FlightBooking.Bookings.Agent, as: BookingAgent
+  alias FlightBooking.Bookings.CreateOrUpdate, as: CreateUpdateBooking
   alias FlightBooking.Users.Agent, as: UserAgent
   alias FlightBooking.Users.CreateOrUpdate, as: CreateUpdateUser
-  alias FlightBooking.Bookings.Agent, as: BookingAgent
-  alias FlightBooking.Bookings.CreateOrUpdate, as: CreateUpdateBooking 
 
   def init_user_agent do
     UserAgent.start_link(%{})

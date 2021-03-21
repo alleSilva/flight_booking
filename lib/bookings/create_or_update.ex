@@ -1,12 +1,13 @@
 defmodule FlightBooking.Bookings.CreateOrUpdate do
-  alias FlightBooking.Bookings.Booking
   alias FlightBooking.Bookings.Agent, as: BookingAgent
+  alias FlightBooking.Bookings.Booking
+
   def call(%{
     complete_date: complete_date,
     from_city: from_city,
     to_city: to_city, user: user}) do
     complete_date
-    |> Booking.build( from_city, to_city, user)
+    |> Booking.build(from_city, to_city, user)
     |> save_booking()
   end
 

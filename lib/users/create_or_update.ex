@@ -1,9 +1,10 @@
 defmodule FlightBooking.Users.CreateOrUpdate do
-  alias FlightBooking.Users.User
   alias FlightBooking.Users.Agent, as: UserAgent
+  alias FlightBooking.Users.User
+
   def call(%{name: name, cpf: cpf, email: email}) do
     name
-    |> User.build( cpf, email)
+    |> User.build(cpf, email)
     |> save_user()
   end
 
