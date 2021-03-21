@@ -6,6 +6,7 @@ Nesse desafio, você deverá criar uma aplicação de reserva de voos, onde 
 
 A struct do usuário deverá possuir os seguintes campos:
 
+```elixir
 %User{
 	id: id,
 	name: name,
