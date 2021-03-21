@@ -12,6 +12,8 @@ defmodule FlightBooking.Users.Agent do
 
   def get(id), do: Agent.get(__MODULE__, &get_user(&1, id))
 
+  def list_all, do: Agent.get(__MODULE__, & &1)
+
   defp update_state(state, %User{id: id} = user) do
     Map.put(state, id, user)
   end
