@@ -4,12 +4,10 @@ defmodule FlightBooking do
   alias FlightBooking.Users.Agent, as: UserAgent
   alias FlightBooking.Users.CreateOrUpdate, as: CreateUpdateUser
 
-  def init_user_agent do
+  def start_agents() do
     UserAgent.start_link(%{})
+    BookingAgent.start_link(%{})
   end
-
-  def init_booking_agent do
-    BookingAgent.start_link(%{})                             end
 
   def get_user(id), do: UserAgent.get(id)
 
