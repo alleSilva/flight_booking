@@ -2,13 +2,13 @@ defmodule FlightBooking.Bookings.Report do
   alias FlightBooking.Bookings.Agent, as: BookingAgent
   alias FlightBooking.Bookings.Booking
 
-  def create(filename \\ "report.csv") do
+  def report_all(filename \\ "report.csv") do
     booking_list = build_booking_list()
     File.write(filename, booking_list)
   end
 
-  def create_by_date(from_date, to_date) do
-    with {:ok, from_naive_date} <- NaiveDateTime.from_iso8601(from_date), {:ok, to_naive_date} <- NaiveDateTime.from_iso8601(to_date) do
+  def report_by_date(from_date, to_date) do
+    with {:ok, _from_naive_date} <- NaiveDateTime.from_iso8601(from_date), {:ok, _to_naive_date} <- NaiveDateTime.from_iso8601(to_date) do
       filtered_booking_list = create_filtered_list(from_date, to_date)
 
     File.write("report_filtered.csv", filtered_booking_list)

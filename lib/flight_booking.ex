@@ -1,6 +1,7 @@
 defmodule FlightBooking do
   alias FlightBooking.Bookings.Agent, as: BookingAgent
   alias FlightBooking.Bookings.CreateOrUpdate, as: CreateUpdateBooking
+  alias FlightBooking.Bookings.Report, as: BookingsReport
   alias FlightBooking.Users.Agent, as: UserAgent
   alias FlightBooking.Users.CreateOrUpdate, as: CreateUpdateUser
 
@@ -16,4 +17,5 @@ defmodule FlightBooking do
   defdelegate create_user(params), to: CreateUpdateUser, as: :call
 
   defdelegate create_booking(params), to: CreateUpdateBooking, as: :call
+  defdelegate report_by_date(from, to), to: BookingsReport, as: :report_by_date
 end
