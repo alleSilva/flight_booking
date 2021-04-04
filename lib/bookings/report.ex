@@ -4,18 +4,21 @@ defmodule FlightBooking.Bookings.Report do
 
   def create(filename \\ "report.csv") do
     booking_list = build_booking_list()
-
     File.write(filename, booking_list)
   end
 
   def create_by_date(from_date, to_date) do
-    filtered_booking_list = build_filtered_list(from_date, to_date)
+    with {:ok, from_naive_date} <- NaiveDateTime.from_iso8601(from_date), {:ok, to_naive_date} <- NaiveDateTime.from_iso8601(to_date) do
+      filtered_booking_list = create_filtered_list(from_date, to_date)
 
     File.write("report_filtered.csv", filtered_booking_list)
-    {:ok, "Report generated successfully"}
+      {:ok, "Report generated successfully"}
+    else
+      _ -> {:error , "date must be yyyy-MM-dd hh:mm:ss"}
+    end
   end
 
-  defp build_filtered_list(from_date, to_date) do
+  defp create_filtered_list(from_date, to_date) do
     BookingAgent.list_all()
     |> Map.values()
     |> Enum.filter(fn map -> filter_by_date(map.complete_date, from_date, to_date) end)
